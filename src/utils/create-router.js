@@ -1,12 +1,12 @@
 import history from './history'
 
-const DYNAMIC_PATH_REGEX = '[a-zA-Z]+'
+const DYNAMIC_PATH_REGEX = '[a-zA-Z0-9-_+&?]+'
 const DEFAULT_ROUTE = 'default'
 
 const getPathRegex = (sections) => {
   return sections.map((value) => {
     if (value.match(new RegExp(`:${DYNAMIC_PATH_REGEX}`)) !== null) {
-      return `([a-zA-Z0-9]+)`
+      return '(' + DYNAMIC_PATH_REGEX + ')'
     }
     return value
   }).join('\\/')
